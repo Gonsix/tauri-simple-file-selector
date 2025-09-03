@@ -3,7 +3,8 @@ import reactLogo from "./assets/react.svg";
 import { invoke } from "@tauri-apps/api/core";
 import "./App.css";
 import { Button } from "./components/ui/button";
-import { Link } from "react-router-dom";
+
+import FileSelector from "./FileSelector";
 
 function App() {
   const [greetMsg, setGreetMsg] = useState("");
@@ -16,49 +17,8 @@ function App() {
 
   return (
     <main className="container">
-      <h1 className="font-bold text-yellow-300">Tailwind CSSが効いてるよ</h1>
-
-      <div className="row">
-        <a href="https://vite.dev" target="_blank">
-          <img src="/vite.svg" className="logo vite" alt="Vite logo" />
-        </a>
-        <a href="https://tauri.app" target="_blank">
-          <img src="/tauri.svg" className="logo tauri" alt="Tauri logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <p>Click on the Tauri, Vite, and React logos to learn more.</p>
-
-      <form
-        className="row"
-        onSubmit={(e) => {
-          e.preventDefault();
-          greet();
-        }}
-      >
-        <input
-          id="greet-input"
-          onChange={(e) => setName(e.currentTarget.value)}
-          placeholder="Enter a name..."
-        />
-        <button type="submit">Greet</button>
-      </form>
-      <p>{greetMsg}</p>
-      <div className="flex justify-center">
-        <Button
-          variant="outline"
-          className="w-32 rounded bg-purple-400 px-3"
-          onClick={() => console.log("button clicked")}
-        >
-          {/*  リンクをアプリ内でブラウザみたいに開いてしまうため、元のアプリに戻って来れなくなる
-          TODO: ブラウザを起動させて別アプリで開く方法を模索する */}
-
-          <a href="https://qiita.com/inco-cyber/items/7b807cfc54c46480c413">
-            ShadCn Button
-          </a>
-        </Button>
+      <div className="mt-10 flex justify-center">
+        <FileSelector />
       </div>
     </main>
   );
